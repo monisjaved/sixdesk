@@ -56,28 +56,27 @@ for dirName, subdirList, fileList in os.walk(rootDir):
 	if "fort.10" in fname and not fname.endswith('.gz'):
 		with open (os.path.join(dirName, fname)) as FileObj:
 		    for lines in FileObj:
-			test = [str(dirName)]
-			test.extend(re.sub(r"\s+", ' ', lines).split(" "))
-			#print test
-			#print len(test)
-			for i in xrange(len(test)):
-				if not test[i]:
-					#print "empty"
-					del test[i]
-				if i >= len(test):
-					break
-			#print test
-			matrix.append(test)
-			j += 1
-			if j == 80000:
-				cur.execute("begin immediate transaction")
-				cur.executemany(sql,matrix)
-				conn.commit()
-				print "inserted"
-				j = 0
-				#print i
-				matrix = []
-
+				test = [str(dirName)]
+				test.extend(re.sub(r"\s+", ' ', lines).split(" "))
+				#print test
+				#print len(test)
+				for i in xrange(len(test)):
+					if not test[i]:
+						#print "empty"
+						del test[i]
+					if i >= len(test):
+						break
+				#print test
+				matrix.append(test)
+				j += 1
+				if j == 80000:
+					cur.execute("begin immediate transaction")
+					cur.executemany(sql,matrix)
+					conn.commit()
+					print "inserted"
+					j = 0
+					#print i
+					matrix = []
 		FileObj.close()	
 if j:
 	cur.execute("begin immediate transaction")
