@@ -37,7 +37,7 @@ for row in cur:
 value = 1
 val = 1
 
-#PRAGMA settings
+# PRAGMA settings
 cur.execute("PRAGMA synchronous = OFF")
 cur.execute("PRAGMA journal_mode = MEMORY")
 cur.execute("PRAGMA auto_vacuum = FULL")

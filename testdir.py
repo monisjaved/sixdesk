@@ -73,16 +73,16 @@ for dirName, subdirList, fileList in os.walk(rootDir):
 					cur.execute("begin immediate transaction")
 					cur.executemany(sql,matrix)
 					conn.commit()
-					print "inserted"
+					#print "inserted"
 					j = 0
-					#print i
+					#print j
 					matrix = []
 		FileObj.close()	
 if j:
 	cur.execute("begin immediate transaction")
 	cur.executemany(sql,matrix)
 	conn.commit()
-	print "left inserted"
+	#print "left inserted"
 	j = 0			
 			#print i
 #commit	
