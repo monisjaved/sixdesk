@@ -1,5 +1,6 @@
 import sqlite3,time
 import psutil, os, MySQLdb
+from config import *
 
 #set high priority
 p = psutil.Process(os.getpid())
@@ -10,7 +11,7 @@ start = time.time()
 
 #opening connection
 try:
-	conn = MySQLdb.connect("localhost","root","","python")
+	conn = MySQLdb.connect(host,user,password,db)
 	conn.autocommit(False)
 	cur = conn.cursor()
 except sqlite3.Error:
