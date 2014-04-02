@@ -30,7 +30,7 @@ cur.execute(sql)
 for row in cur:
 	print row
 
-	
+
 #variable
 value = 1
 val = 1
@@ -59,7 +59,7 @@ for i in range(0,10):
 		value += 6
 	cur.executemany('INSERT into input values(%s,%s,%s,%s,%s,%s)',matrix)
 	conn.commit()
-	
+
 #commit	
 #conn.commit()
 
